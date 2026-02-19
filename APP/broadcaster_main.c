@@ -63,9 +63,9 @@ int main(void)
     UART1_DefInit();
 #endif
     /* 配置外部中断源为 GPIO - PB10-13 */
-    //PB13-ACC
-    GPIOB_ModeCfg(GPIO_Pin_13, GPIO_ModeIN_Floating);
-    GPIOB_ITModeCfg(GPIO_Pin_13, GPIO_ITMode_FallEdge); // 下降沿触发
+    // //PB13-ACC
+    // GPIOB_ModeCfg(GPIO_Pin_13, GPIO_ModeIN_Floating);
+    // GPIOB_ITModeCfg(GPIO_Pin_13, GPIO_ITMode_FallEdge); // 下降沿触发
     //PB12-ECK
     GPIOB_ModeCfg(GPIO_Pin_12, GPIO_ModeIN_Floating);
     GPIOB_ITModeCfg(GPIO_Pin_12, GPIO_ITMode_FallEdge); // 下降沿触发
@@ -79,7 +79,8 @@ int main(void)
     PFIC_EnableIRQ(GPIO_B_IRQn);
     PWR_PeriphWakeUpCfg(ENABLE, RB_SLP_GPIO_WAKE, RB_SLP_GPIO_WAKE);
 
-    PRINT("%s\n", VER_LIB);
+    mDelaymS(100);  // 给电容充电、电源稳定时间
+    // PRINT("%s\n", VER_LIB);
     CH59x_BLEInit();
     HAL_Init();
     GAPRole_BroadcasterInit();
@@ -92,30 +93,45 @@ __INTERRUPT
 __HIGH_CODE
 void GPIOB_IRQHandler( void )
 {
-    // 检测到PB12中断
-    if(GPIOB_ReadITFlagBit(GPIO_Pin_13))
-    {
-        PRINT("ENTER ACC_IRQHandler\n");
-        mag_int_flag = 1; // 设置磁强计中断标志位
-        GPIOB_ClearITFlagBit(GPIO_Pin_13);
+    // // 检测到PB12中断
+    // if(GPIOB_ReadITFlagBit(GPIO_Pin_13))
+    // {
+    //     PRINT("ENTER ACC_IRQHandler\n");
+    //     tmos_set_event(Broadcaster_TaskID, ACC_SET_EVENT); // 触发加速度事件
+    //     GPIOB_ClearITFlagBit(GPIO_Pin_13);
+    // } 
+if (GPIOB_ReadITFlagBit(GPIO_Pin_12))
+{
+    mDelaymS(5); // 简单消抖
+    uint8_t level = GPIOB_ReadPortPin(GPIO_Pin_12) ? 1 : 0;
+    if (!level) { // 低电平 = 按下（假设按下接地）
+        tmos_set_event(Broadcaster_TaskID, ECK_SET_EVENT);
+    } else {      // 高电平 = 松开
+        tmos_set_event(Broadcaster_TaskID, ECK_RELEASE_EVENT);
     }
-    if(GPIOB_ReadITFlagBit(GPIO_Pin_12))
-    {
-        PRINT("ENTER ECK_IRQHandler\n");
-        eck_int_flag = 1;
-        GPIOB_ClearITFlagBit(GPIO_Pin_12);
-    }
-    if(GPIOB_ReadITFlagBit(GPIO_Pin_11))
-    {
-        PRINT("ENTER ECL_IRQHandler\n");
-        ecl_int_flag = 1;
-        GPIOB_ClearITFlagBit(GPIO_Pin_11);
-    }
-    if(GPIOB_ReadITFlagBit(GPIO_Pin_10))
-    {
-        PRINT("ENTER ECR_IRQHandler\n");
-        ecr_int_flag = 1;
-        GPIOB_ClearITFlagBit(GPIO_Pin_10);
-    }
+        // 切换到相反边沿，下次捕捉另一个动作
+    GPIOB_ITModeCfg(GPIO_Pin_12,
+        level ? GPIO_ITMode_FallEdge : GPIO_ITMode_RiseEdge);
+    GPIOB_ClearITFlagBit(GPIO_Pin_12);
 }
+
+else if (GPIOB_ReadITFlagBit(GPIO_Pin_10))
+{
+    tmos_set_event(Broadcaster_TaskID, ECN_SET_EVENT);
+    // 根据当前电平动态切换触发边沿，模拟双边沿检测
+    GPIOB_ITModeCfg(GPIO_Pin_10,
+    GPIOB_ReadPortPin(GPIO_Pin_10) ? GPIO_ITMode_FallEdge : GPIO_ITMode_RiseEdge);
+    GPIOB_ClearITFlagBit(GPIO_Pin_10);
+}
+else if (GPIOB_ReadITFlagBit(GPIO_Pin_11))
+{
+    tmos_set_event(Broadcaster_TaskID, ECN_SET_EVENT);
+    // 根据当前电平动态切换触发边沿，模拟双边沿检测
+    GPIOB_ITModeCfg(GPIO_Pin_11,
+    GPIOB_ReadPortPin(GPIO_Pin_11) ? GPIO_ITMode_FallEdge : GPIO_ITMode_RiseEdge);
+    GPIOB_ClearITFlagBit(GPIO_Pin_11);
+}
+}
+
+
 /******************************** endfile @ main ******************************/

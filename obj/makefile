@@ -15,6 +15,8 @@ RM := rm -rf
 -include Profile/subdir.mk
 -include LIB/subdir.mk
 -include HAL/subdir.mk
+-include APP/BTHome/mbedtls/library/subdir.mk
+-include APP/BTHome/subdir.mk
 -include APP/subdir.mk
 -include subdir.mk
 -include objects.mk
@@ -55,7 +57,7 @@ all: Broadcaster-CH592.elf secondary-outputs
 
 # Tool invocations
 Broadcaster-CH592.elf: $(OBJS) $(USER_OBJS)
-	@	@	riscv-none-elf-gcc -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common  -g -T "C:\Users\bitshen\Desktop\git\高業\高業\Broadcaster-CH592\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../" -L"C:\Users\bitshen\Desktop\git\高業\高業\Broadcaster-CH592\LIB" -L"C:\Users\bitshen\Desktop\git\高業\高業\Broadcaster-CH592\StdPeriphDriver" -Xlinker --print-memory-usage -Wl,-Map,"Broadcaster-CH592.map" --specs=nano.specs --specs=nosys.specs  -o "Broadcaster-CH592.elf" $(OBJS) $(USER_OBJS) $(LIBS) -lprintfloat
+	@	@	riscv-none-elf-gcc -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8 -mno-save-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common  -g -T "C:\Users\bitshen\Desktop\WKnob-main\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../" -L"C:\Users\bitshen\Desktop\WKnob-main\LIB" -L"C:\Users\bitshen\Desktop\WKnob-main\StdPeriphDriver" -Xlinker --print-memory-usage -Wl,-Map,"Broadcaster-CH592.map" --specs=nano.specs --specs=nosys.specs  -o "Broadcaster-CH592.elf" $(OBJS) $(USER_OBJS) $(LIBS) -lprintfloat
 	@	@
 Broadcaster-CH592.hex: Broadcaster-CH592.elf
 	@	riscv-none-elf-objcopy -O ihex "Broadcaster-CH592.elf"  "Broadcaster-CH592.hex"

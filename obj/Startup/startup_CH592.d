@@ -1,2 +1,2 @@
 Startup/startup_CH592.o: \
- C:/Users/bitshen/Desktop/git/高業/高業/Broadcaster-CH592/Startup/startup_CH592.S
+ C:/Users/bitshen/Desktop/WKnob-main/Startup/startup_CH592.S
