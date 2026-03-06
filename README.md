@@ -1,9 +1,9 @@
-![Snipaste_2026-03-06_19-51-14](https://github.com/user-attachments/assets/132e63fa-159f-4a7b-aed6-850960ce8435)
-
 <div style="font-family:sans-serif;max-width:900px;margin:auto;color:#333;line-height:1.7">
 
 <div style="background:linear-gradient(135deg,#2a9d8f,#264653);padding:32px;border-radius:14px;color:white;text-align:center;margin-bottom:30px">
 <h1 style="margin:0">WKnob Wireless Knob</h1>
+  <img width="993" height="691" alt="image" src="https://github.com/user-attachments/assets/d59263a9-466b-446b-97ee-9a71211f7ad1" />
+
 <p style="opacity:0.9;margin-top:4px">BLE · HomeAssistant · BTHome · Encoder · Accelerometer Interaction</p>
 </div>
 
@@ -26,10 +26,11 @@
 <h3 style="color:#2a9d8f;margin:0 0 10px 0">Project Demo (click to view)</h3>
 <div style="text-align:center">
 <a href="https://www.bilibili.com/video/BV1ejPszpENa/" target="_blank">
-<img src="https://image.lceda.cn/oshwhub/pullImage/353b34026d5d416d9a0d3ffef39fc01a.png" width="500" style="border-radius:8px;cursor:pointer" />
+<img width="828" height="486" alt="image" src="https://github.com/user-attachments/assets/4077f421-f89e-4679-a1d7-e0fd7f005ad5" />
 </a>
 </div>
 </div>
+
 
 <hr style="border:none;border-top:1px solid #ccc;margin:30px 0" />
 
@@ -89,7 +90,8 @@
 <p>Features: simple operation | batch support | suitable for mass production</p>
 <p>Firmware file is included in attachments.</p>
 <div align="center" style="margin-top:15px">
-<img src="https://image.lceda.cn/oshwhub/pullImage/f9eaa7fd5a03474e9db425137d39f74d.png" width="500" style="border-radius:8px" />
+<img width="742" height="451" alt="image" src="https://github.com/user-attachments/assets/cc4ca9d0-dcba-415f-8e3c-df9998462bfb" />
+
 </div>
 </div>
 
@@ -98,11 +100,13 @@
 <p>After flashing, add the device in <strong>Home Assistant (HA)</strong>.</p>
 <p>The device is usually <strong>auto‑discovered</strong> under the name <strong>WKnob</strong>.</p>
 <div align="center" style="margin-top:15px">
-<img src="https://image.lceda.cn/oshwhub/pullImage/c6c86faa91e244c9a85e51cd99ad4f30.png" width="500" style="border-radius:8px" />
+<img width="742" height="278" alt="image" src="https://github.com/user-attachments/assets/5679e56e-59d9-409c-b617-832425754b52" />
+
 </div>
 <p>Once added, you can view real‑time sensor data, create automations, and link with other HA devices.</p>
 <div align="center" style="margin-top:15px">
-<img src="https://image.lceda.cn/oshwhub/pullImage/75fe337a1f894c80a9c90e519358172f.png" width="500" style="border-radius:8px" />
+<img width="742" height="656" alt="image" src="https://github.com/user-attachments/assets/c336ae48-1cf1-44c7-80d2-785d66b7e84d" />
+
 </div>
 </div>
 </div>
@@ -137,13 +141,18 @@ Balances <strong>low power consumption</strong> and <strong>fast response</stron
 <div style="background:#f8f9fa;padding:20px;border-radius:10px;border-left:5px solid #2a9d8f">
 <h3 style="color:#2a9d8f;margin-top:0">Components & Parts</h3>
 <p>SMT encoder — pay attention to height when purchasing</p>
-<img src="https://image.lceda.cn/oshwhub/pullImage/e533f88ac611416c9091a49afb1254e9.png" width="400" style="border-radius:8px;margin-bottom:15px" />
+<img width="820" height="247" alt="image" src="https://github.com/user-attachments/assets/8a972152-f8cc-4461-8aee-42e5f387b035" />
+
 <p>Aluminum alloy knob</p>
-<img src="https://image.lceda.cn/oshwhub/pullImage/6c143a5f28094afc9b642ea547c06b6a.png" width="400" style="border-radius:8px;margin-bottom:15px" />
+<img width="820" height="249" alt="image" src="https://github.com/user-attachments/assets/9f9143c1-d979-4bd4-8231-7c2651f549f7" />
+
 <p>Enclosure design in attachments — uses <strong>heat‑set inserts: M3 × 4 × 3</strong></p>
 <div style="text-align:center;margin-top:15px">
-<img src="https://image.lceda.cn/oshwhub/pullImage/1d2ced9908f7459fa220dbb35b8e6d70.png" width="400" style="border-radius:8px;margin-bottom:10px" />
-<img src="https://image.lceda.cn/oshwhub/pullImage/d242140c2741476cad1327bc8f4277fa.png" width="400" style="border-radius:8px" />
+<img width="820" height="606" alt="image" src="https://github.com/user-attachments/assets/30840805-7122-409d-b56c-b74e63cb8046" />
+
+<img width="820" height="601" alt="image" src="https://github.com/user-attachments/assets/6c9b79aa-bf5e-45a9-893d-083685ee0294" />
+  <img width="910" height="718" alt="image" src="https://github.com/user-attachments/assets/24af3699-df83-459e-abb2-e6193c36faaf" />
+
 </div>
 </div>
 
