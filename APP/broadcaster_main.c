@@ -64,7 +64,7 @@ int main(void)
 #endif
     /* 配置外部中断源为 GPIO - PB10-13 */
     // //PB13-ACC
-    // GPIOB_ModeCfg(GPIO_Pin_13, GPIO_ModeIN_Floating);
+    GPIOB_ModeCfg(GPIO_Pin_13, GPIO_ModeIN_Floating);
     // GPIOB_ITModeCfg(GPIO_Pin_13, GPIO_ITMode_FallEdge); // 下降沿触发
     //PB12-ECK
     GPIOB_ModeCfg(GPIO_Pin_12, GPIO_ModeIN_Floating);
